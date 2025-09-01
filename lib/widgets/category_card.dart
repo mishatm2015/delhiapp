@@ -15,28 +15,28 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
+      // decoration: BoxDecoration(
+      //   color: color.withOpacity(0.1),
+      //   borderRadius: BorderRadius.circular(12),
+      //   border: Border.all(color: color.withOpacity(0.3)),
+      // ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Icon(
-              icon,
-              color: color,
-              size: 24,
-            ),
-          ),
-          const SizedBox(height: 8),
+          // Container(
+          //   width: 40,
+          //   height: 40,
+          //   decoration: BoxDecoration(
+          //     color: color.withOpacity(0.2),
+          //     borderRadius: BorderRadius.circular(20),
+          //   ),
+          //   child: Icon(
+          //     icon,
+          //     color: color,
+          //     size: 24,
+          //   ),
+          // ),
+          // const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Text(

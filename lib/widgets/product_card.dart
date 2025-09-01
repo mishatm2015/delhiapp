@@ -63,19 +63,27 @@ class ProductCard extends StatelessWidget {
               if (isPreOrder)
                 Positioned(
                   top: 8,
-                  right: 8,
+                  left: 36,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    width: 70,
+                    height: 24,
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: AppConfig.accentColor,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Text(
-                      'Pre-order',
-                      style: TextStyle(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        width: 0.5,
                         color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Pre-order',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

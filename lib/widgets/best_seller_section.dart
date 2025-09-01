@@ -46,7 +46,7 @@ class BestSellerSection extends StatelessWidget {
             return Container(
               width: 106,
               height: 200,
-              margin: const EdgeInsets.only(right: 8),
+              margin: const EdgeInsets.only(right: 8,left: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppConfig.defaultRadius),
               ),

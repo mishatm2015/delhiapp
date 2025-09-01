@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../config/app_config.dart';
-import '../widgets/product_card.dart';
-import '../widgets/category_card.dart';
+
 import '../widgets/best_seller_section.dart';
 import '../widgets/categories_section.dart';
 import '../widgets/bottom_banner.dart';
+import '../widgets/info_banner.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -54,16 +54,18 @@ class _ShopScreenState extends State<ShopScreen> {
                     children: [
                       // Primary color background container for header
                       Container(
-                        width: 375,
-                        height: 160,
+                        width: double.infinity,
+                        height: 110,
                         color: AppConfig.primaryColor,
                         child: Column(
                           children: [
+                            // Status bar space
+                            const SizedBox(height: 20),
                             // Top Address Bar
                             Padding(
                               padding: const EdgeInsets.only(
-                                top: 52,
-                                left: AppConfig.defaultPadding,
+                                top: 4,
+                                left: 16,
                                 right: AppConfig.defaultPadding,
                               ),
                               child: Row(
@@ -77,20 +79,18 @@ class _ShopScreenState extends State<ShopScreen> {
                                     ),
                                   ),
                                   const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text(
-                                      "Shalimar Bagh, Delhi NCR, 122022",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
+                                  Text(
+                                    "Shalimar Bagh, Delhi NCR, 122022 ",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                   Container(
-                                    width: 20,
-                                    height: 20,
+                                    width: 15,
+                                    height: 15,
                                     decoration: BoxDecoration(
                                       color: Colors.transparent,
                                       shape: BoxShape.circle,
@@ -102,7 +102,7 @@ class _ShopScreenState extends State<ShopScreen> {
                                     child: const Icon(
                                       Icons.keyboard_arrow_down,
                                       color: Colors.white,
-                                      size: 14,
+                                      size: 11,
                                     ),
                                   )
                                 ],
@@ -111,45 +111,53 @@ class _ShopScreenState extends State<ShopScreen> {
 
                             // Search Bar
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: AppConfig.defaultPadding,
-                                vertical: 8,
+                              padding: const EdgeInsets.only(
+                                left: 16,
+                                right: AppConfig.defaultPadding,
+                                top: 8,
+                                bottom: 8,
                               ),
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                                width: 319,
+                                height: 40,
+                                padding: const EdgeInsets.only(
+                                  top: 4,
+                                  right: 8,
+                                  bottom: 4,
+                                  left: 4,
+                                ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(AppConfig.defaultRadius),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      blurRadius: 8,
-                                      offset: const Offset(0, 2),
-                                    ),
-                                  ],
+                                  color: const Color(0xFFF5F5F5),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.search, color: Colors.grey[600], size: 20),
-                                    const SizedBox(width: 12),
+                                    Icon(Icons.search, color: Colors.grey[600], size: 18),
+                                    const SizedBox(width: 8),
                                     Expanded(
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                          hintText: "Search for products",
-                                          hintStyle: TextStyle(
-                                            color: Colors.grey[500],
-                                            fontSize: 14,
+                                                                                                                                                             child: TextField(
+                                          decoration: InputDecoration(
+                                            hintText: "Search for products",
+                                            hintStyle: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 12,
+                                              height: 1.0, // line-height: 100%
+                                              letterSpacing: -0.24, // -2% of 12px = -0.24
+                                              color: Colors.grey[500],
+                                            ),
+                                            border: InputBorder.none,
+                                            contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                                            isDense: true,
                                           ),
-                                          border: InputBorder.none,
-                                          contentPadding: const EdgeInsets.symmetric(vertical: 8),
                                         ),
-                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 8),
                           ],
                         ),
                       ),
@@ -158,12 +166,12 @@ class _ShopScreenState extends State<ShopScreen> {
                       const SizedBox(height: 24),
                       _buildBestSellersSection(),
                       const SizedBox(height: 24),
-                      _buildInfoBanner(),
+                      const InfoBanner(),
                       const SizedBox(height: 24),
                       const CategoriesSection(),
                       const SizedBox(height: 24),
                       const BottomBanner(),
-                      const SizedBox(height: 24),
+
                     ],
                   ),
                 ),
@@ -179,10 +187,10 @@ class _ShopScreenState extends State<ShopScreen> {
     return Column(
       children: [
         Container(
-          height: 200,
+          height: 168,
           child: CarouselSlider(
             options: CarouselOptions(
-              height: 200,
+              height:168,
               viewportFraction: 1.0,
               autoPlay: false,
               autoPlayInterval: const Duration(seconds: 3),
@@ -214,7 +222,7 @@ class _ShopScreenState extends State<ShopScreen> {
             }).toList(),
           ),
         ),
-        const SizedBox(height: 16),
+
         // Dot indicators
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -242,56 +250,5 @@ class _ShopScreenState extends State<ShopScreen> {
     return  BestSellerSection();
   }
 
-  Widget _buildInfoBanner() {
-    return Container(
-      padding: const EdgeInsets.symmetric( vertical: 16),
-      decoration: BoxDecoration(
-        color: AppConfig.primaryColor,
-       // borderRadius: BorderRadius.circular(AppConfig.defaultRadius),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 16,
-            height: 16,
-            alignment: Alignment.center,
-            child: const Icon(
-              Icons.favorite,
-              color: Colors.white,
-              size: 14,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Flexible(
-            child: Text(
-              'Delivering authentic South Indian taste in Delhi NCR.',
-              style: const TextStyle(
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w600,
-                fontSize: 12,
-                height: 1.0,
-                letterSpacing: -0.24,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Container(
-            width: 16,
-            height: 16,
-            alignment: Alignment.center,
-            child: const Icon(
-              Icons.favorite,
-              color: Colors.white,
-              size: 14,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
 }
