@@ -26,29 +26,7 @@ class _ShopScreenState extends State<ShopScreen> {
   @override
   void initState() {
     super.initState();
-    // Auto-play functionality
-    // _startAutoPlay(); // Removed auto-play
   }
-
-  // void _startAutoPlay() { // Removed auto-play
-  //   Future.delayed(const Duration(seconds: 3), () {
-  //     if (mounted) {
-  //       if (_currentPage < bannerImages.length - 1) {
-  //         _pageController.nextPage(
-  //           duration: const Duration(milliseconds: 800),
-  //           curve: Curves.easeInOut,
-  //         );
-  //       } else {
-  //         _pageController.animateToPage(
-  //           0,
-  //           duration: const Duration(milliseconds: 800),
-  //           curve: Curves.easeInOut,
-  //         );
-  //       }
-  //       _startAutoPlay();
-  //     }
-  //   });
-  // }
 
   @override
   void dispose() {
@@ -60,140 +38,139 @@ class _ShopScreenState extends State<ShopScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppConfig.primaryColor,
-      body: CustomScrollView(
-        slivers: [
-          // Custom App Bar with Location and Search
-          SliverAppBar(
-            expandedHeight: 140,
-            floating: false,
-            pinned: true,
-            backgroundColor: AppConfig.primaryColor,
-            elevation: 0,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                color: AppConfig.primaryColor,
-                child: SafeArea(
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Main Content
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppConfig.backgroundColor,
+                ),
+                child: SingleChildScrollView(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 20),
-                      _buildLocationBar(),
-                      const SizedBox(height: 16),
-                      _buildSearchBar(),
+                      // Primary color background container for header
+                      Container(
+                        width: 375,
+                        height: 160,
+                        color: AppConfig.primaryColor,
+                        child: Column(
+                          children: [
+                            // Top Address Bar
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 52,
+                                left: AppConfig.defaultPadding,
+                                right: AppConfig.defaultPadding,
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Deliver to Home",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      "Shalimar Bagh, Delhi NCR, 122022",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 20,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: const Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Colors.white,
+                                      size: 14,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+
+                            // Search Bar
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: AppConfig.defaultPadding,
+                                vertical: 8,
+                              ),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(AppConfig.defaultRadius),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 8,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.search, color: Colors.grey[600], size: 20),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: "Search for products",
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey[500],
+                                            fontSize: 14,
+                                          ),
+                                          border: InputBorder.none,
+                                          contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                          ],
+                        ),
+                      ),
+
+                      _buildHeroBanner(),
+                      const SizedBox(height: 24),
+                      _buildBestSellersSection(),
+                      const SizedBox(height: 24),
+                      _buildInfoBanner(),
+                      const SizedBox(height: 24),
+                      const CategoriesSection(),
+                      const SizedBox(height: 24),
+                      const BottomBanner(),
+                      const SizedBox(height: 24),
                     ],
                   ),
                 ),
               ),
             ),
-          ),
-          
-          // Main Content
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
-                color: AppConfig.backgroundColor,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildHeroBanner(),
-                  const SizedBox(height: 24),
-                  _buildBestSellersSection(),
-                  const SizedBox(height: 24),
-                  _buildInfoBanner(),
-                  const SizedBox(height: 24),
-                                      CategoriesSection(),
-                  const SizedBox(height: 24),
-                  const BottomBanner(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-    Widget _buildLocationBar() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: [
-          const Text(
-            'Deliver to Home',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              'Shalimar Bagh, Delhi NCR, 122022',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-          ),
-          const SizedBox(width: 8),
-          Container(
-            width: 16,
-            height: 16,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.keyboard_arrow_down,
-              color: AppConfig.primaryColor,
-              size: 12,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSearchBar() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Icon(
-            Icons.search,
-            color: Colors.grey[400],
-            size: 20,
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search for products',
-                border: InputBorder.none,
-                hintStyle: TextStyle(
-                  color: Colors.grey[400],
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -226,7 +203,6 @@ class _ShopScreenState extends State<ShopScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 0),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
                       image: DecorationImage(
                         image: AssetImage(imagePath),
                         fit: BoxFit.cover,
@@ -246,13 +222,13 @@ class _ShopScreenState extends State<ShopScreen> {
             return AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOut,
-              width: _currentPage == entry.key ? 24 : 8,
-              height: 8,
+              width: _currentPage == entry.key ? 8 : 4,
+              height: 4,
               margin: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 color: _currentPage == entry.key
-                    ? Color(0xFFF717680)
+                    ? Colors.grey
                     : Colors.grey.withOpacity(0.5),
               ),
             );
@@ -263,7 +239,7 @@ class _ShopScreenState extends State<ShopScreen> {
   }
 
   Widget _buildBestSellersSection() {
-    return BestSellerSection();
+    return  BestSellerSection();
   }
 
   Widget _buildInfoBanner() {
@@ -271,6 +247,7 @@ class _ShopScreenState extends State<ShopScreen> {
       padding: const EdgeInsets.symmetric( vertical: 16),
       decoration: BoxDecoration(
         color: AppConfig.primaryColor,
+       // borderRadius: BorderRadius.circular(AppConfig.defaultRadius),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -291,10 +268,10 @@ class _ShopScreenState extends State<ShopScreen> {
               'Delivering authentic South Indian taste in Delhi NCR.',
               style: const TextStyle(
                 fontFamily: 'Inter',
-                fontWeight: FontWeight.w700, // Bold
+                fontWeight: FontWeight.w600,
                 fontSize: 12,
-                height: 1.0, // line-height: 100%
-                letterSpacing: -0.24, // -2% of 12px ≈ -0.24
+                height: 1.0,
+                letterSpacing: -0.24,
                 color: Colors.white,
               ),
               textAlign: TextAlign.center,
@@ -317,8 +294,4 @@ class _ShopScreenState extends State<ShopScreen> {
       ),
     );
   }
-
-
-
-
 }

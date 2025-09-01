@@ -61,7 +61,7 @@ class CategoriesSection extends StatelessWidget {
             ),
             _buildCategoryCard(
               'Kerala Special Savouries',
-              'assets/images/savouries.png',
+              'assets/images/chips.png',
               AppConfig.secondaryColor,
             ),
             _buildCategoryCard(
@@ -81,7 +81,7 @@ class CategoriesSection extends StatelessWidget {
             ),
             _buildCategoryCard(
               'Kerala Special Savouries',
-              'assets/images/savouries.png',
+              'assets/images/chips.png',
               AppConfig.secondaryColor,
             ),
             _buildCategoryCard(
