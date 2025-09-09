@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../config/app_config.dart';
+import 'cart_screen.dart';
 
 import '../widgets/best_seller_section.dart';
 import '../widgets/categories_section.dart';
@@ -109,7 +110,7 @@ class _ShopScreenState extends State<ShopScreen> {
                               ),
                             ),
 
-                            // Search Bar
+                            // Search Bar and Cart Icon
                             Padding(
                               padding: const EdgeInsets.only(
                                 left: 16,
@@ -117,44 +118,73 @@ class _ShopScreenState extends State<ShopScreen> {
                                 top: 8,
                                 bottom: 8,
                               ),
-                              child: Container(
-                                width: 319,
-                                height: 40,
-                                padding: const EdgeInsets.only(
-                                  top: 4,
-                                  right: 8,
-                                  bottom: 4,
-                                  left: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFF5F5F5),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.search, color: Colors.grey[600], size: 18),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                                                                                                                                             child: TextField(
-                                          decoration: InputDecoration(
-                                            hintText: "Search for products",
-                                            hintStyle: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w400,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 12,
-                                              height: 1.0, // line-height: 100%
-                                              letterSpacing: -0.24, // -2% of 12px = -0.24
-                                              color: Colors.grey[500],
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      height: 40,
+                                      padding: const EdgeInsets.only(
+                                        top: 4,
+                                        right: 8,
+                                        bottom: 4,
+                                        left: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFFF5F5F5),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.search, color: Colors.grey[600], size: 18),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: "Search for products",
+                                                hintStyle: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.w400,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 12,
+                                                  height: 1.0, // line-height: 100%
+                                                  letterSpacing: -0.24, // -2% of 12px = -0.24
+                                                  color: Colors.grey[500],
+                                                ),
+                                                border: InputBorder.none,
+                                                contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                                                isDense: true,
+                                              ),
                                             ),
-                                            border: InputBorder.none,
-                                            contentPadding: const EdgeInsets.symmetric(vertical: 12),
-                                            isDense: true,
                                           ),
-                                        ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const CartScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(0.2),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: const Icon(
+                                        Icons.shopping_cart,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             const SizedBox(height: 8),
