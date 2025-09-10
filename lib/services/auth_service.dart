@@ -21,6 +21,7 @@ class AuthService {
         id: '1',
         name: 'Demo User',
         email: 'demo@example.com',
+        phoneNumber: '99999999999',
         createdAt: DateTime(2024, 1, 1),
       );
       _isAuthenticated = true;
@@ -47,6 +48,7 @@ class AuthService {
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: name,
       email: email,
+      phoneNumber: '99999999999', // Default phone number
       createdAt: DateTime.now(),
     );
     _isAuthenticated = true;
