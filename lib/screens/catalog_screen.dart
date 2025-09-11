@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../config/app_config.dart';
 import '../models/product_model.dart';
 import '../models/category_model.dart';
+import 'search_results_screen.dart';
 
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({super.key});
@@ -176,7 +177,16 @@ class _CatalogScreenState extends State<CatalogScreen> {
                 BlendMode.srcIn,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchResultsScreen(
+                    searchQuery: 'Banana chips',
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),

@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                constraints: const BoxConstraints(),
           ),
         ],
-        ),
+      ),
         centerTitle: false,
       ),
       body: SingleChildScrollView(
@@ -182,10 +182,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.black87,
                 ),
               ),
-              Container(
+          Container(
                 width: 66,
                 height: 20,
-                decoration: BoxDecoration(
+            decoration: BoxDecoration(
                   border: Border.all(color: AppConfig.primaryColor, width: 0.5),
                   borderRadius: BorderRadius.circular(6),
                 ),
@@ -202,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: const Text(
                     '+ Add new',
-                    style: TextStyle(
+              style: TextStyle(
                       color: AppConfig.primaryColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 10,
@@ -210,9 +210,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       letterSpacing: -0.20,
                     ),
                     textAlign: TextAlign.center,
-                  ),
-                ),
               ),
+            ),
+          ),
             ],
           ),
           const SizedBox(height: 12),
@@ -472,11 +472,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Colors.white,
                       ),
                     ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
           const SizedBox(width: 10),
           Container(
             width: 156,
@@ -493,9 +493,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
-      ),
+                  ),
+                ],
+              ),
     );
   }
 
